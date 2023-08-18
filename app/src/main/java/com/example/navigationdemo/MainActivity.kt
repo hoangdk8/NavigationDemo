@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.example.navigationdemo.databinding.ActivityMainBinding
@@ -27,6 +28,15 @@ class MainActivity : AppCompatActivity() {
 
         // Thiết lập ActionBar để sử dụng với NavController
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
+
+        binding.buttonAdd.setOnClickListener {
+            val action = DetailFragmentDirections.addNewFragment()
+            navController.navigate(action)
+        }
+        binding.buttonReplace.setOnClickListener {
+            val action = HomeFragmentDirections.actionReplaceFragment()
+            navController.navigate(action)
+        }
     }
 
     // Xử lý sự kiện khi người dùng nhấn nút Up (Back) trên ActionBar

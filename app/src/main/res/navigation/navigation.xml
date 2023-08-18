@@ -13,14 +13,54 @@
         <action
         android:id="@+id/action_homeFragment_to_detailFragment"
         app:destination="@id/detailFragment" />
+        <!-- Hành động từ HomeFragment sang DetailFragment với dữ liệu kiểu nguyên thủy -->
+        <action
+            android:id="@+id/action_replaceFragment"
+            app:destination="@id/replaceFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment_withData"
+            app:destination="@id/detailFragment">
+            <argument
+                android:name="stringData"
+                app:argType="string" />
+            <argument
+                android:name="intData"
+                app:argType="integer" />
+
+            <argument
+                android:name="objectData"
+                app:argType="com.example.navigationdemo.DataObject" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.navigationdemo.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" >
-        <argument
-            android:name="receivedData"
-            app:argType="string" />
+        <action
+            android:id="@+id/add_new_fragment"
+            app:destination="@id/newFragment" />
+        <action
+            android:id="@+id/action_detailFragment_to_replaceFragment"
+            app:destination="@id/replaceFragment"
+            app:popUpTo="@+id/detailFragment"
+            app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/newFragment"
+        android:name="com.example.navigationdemo.NewFragment"
+        android:label="New Fragment" />
+
+    <action
+        android:id="@+id/action_goToNewFragment"
+        app:destination="@id/newFragment" />
+    <fragment
+        android:id="@+id/replaceFragment"
+        android:name="com.example.navigationdemo.ReplaceFragment"
+        android:label="Replace Fragment" />
+
+    <action
+        android:id="@+id/action_replaceFragment"
+        app:destination="@id/replaceFragment" />
+
 </navigation>
